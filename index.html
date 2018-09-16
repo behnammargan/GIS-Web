@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <title> GIS Application - Extended Template by Cyber313</title>
+        <meta name="author" content="luckynvic@gmail.com">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        
+        <link href="ext/customScroll/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+        <link href="css/style.default.css" rel="stylesheet">
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!--<script src="http://maps.googleapis.com/maps/api/js"></script> -->
+
+    </head>
+    <body>
+
+
+        <nav class="navbar navbar-default nav-fixed-top" role="navigation" id="app-nav-bar" >
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">GIS </a>
+            </div>
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                
+
+<div class="row">
+     <!--   <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4"> -->
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Select Layers</div>
+            
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Layer1
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionDefault" class="label-default"></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Layer2
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Layer3
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionSuccess" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionSuccess" class="label-success"></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Layer4
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionInfo" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionInfo" class="label-info"></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Layer5
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionWarning" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionWarning" class="label-warning"></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Layer5
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionDanger" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionDanger" class="label-danger"></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>            
+        </div>
+
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+
+
+        <div id="map-canvas" ></div>
+        <div class="visible-lg visible-md">
+            <div id="search-box">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label class="sr-only" for="searchText">Search</label>
+                        <input type="text" class="form-control input-sm" id="searchText" placeholder="Search Location">
+                    </div>
+                    <button type="submit" class="btn btn-default btn-sm">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </form>
+            </div>
+
+
+           <div id="sidemenu" class="well">
+              
+
+
+   </div> 
+
+
+            </div>
+        </div>
+
+
+<script type="text/javascript">
+
+
+
+</script>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="ext/customScroll/js/jquery.mCustomScrollbar.min.js"></script>
+        <script src="ext/customScroll/js/jquery.mousewheel.min.js"></script>
+        <script src="js/application.js"></script>
+        <script>
+			function map_init() {
+				var mapOptions = {
+					center : new google.maps.LatLng(43.475654, -80.550946),
+					zoom : 11,
+					mapTypeId : google.maps.MapTypeId.ROADMAP,
+					mapTypeControlOptions : {
+						position : google.maps.ControlPosition.RIGHT_TOP,
+						style : google.maps.MapTypeControlStyle.HORIZONTAL_BAR
+					},
+					zoomControlOptions : {
+						position : google.maps.ControlPosition.RIGHT_BOTTOM
+					},
+					panControlOptions : {
+						position : google.maps.ControlPosition.RIGHT_BOTTOM
+					}
+				};
+
+				EGMap0 = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+				// default map type
+				EGMap0.mapTypeControlOptions.mapTypeIds = ['roadmap', 'satellite', 'hybrid', 'terrain'];
+
+
+    $.ajax({
+        type: "GET",
+        url: "https://wheelmap.org/api/nodes?api_key=vzFETJW1QnfzWJJy1V1M&q=%27cafe%27&bbox=-80.589818,43.432266,-80.467422,43.521234&per_page=500&wheelchair=yes",
+        dataType: 'json',
+        async: true,
+        success: function (bbb){
+               console.log();
+            
+
+var latt = parseInt(bbb.nodes[3].lat,10)
+var lngg = parseInt(bbb.nodes[3].lon,10)
+
+console.log(bbb);
+console.log(bbb.nodes[155].lat);
+console.log(bbb.nodes[155].lon);
+
+//var integer = parseInt(text, 10);
+
+var gmarker = [];
+$("#someSwitchOptionDefault").change(function() {
+    if(this.checked) {
+
+for (i = 0; i < bbb.nodes.length; i++) {
+
+
+
+       var myLatLng = {lat:parseInt(bbb.nodes[i].lat,10) , lng:parseInt(bbb.nodes[i].lon,10) };
+                var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(bbb.nodes[i].lat, bbb.nodes[i].lon),
+     map: EGMap0,
+   // title: 'hello'
+  });
+
+gmarker.push(marker);
+google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(bbb.nodes[i].name);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+
+    }
+    }
+
+else{
+    for (i = 0; i < gmarker.length; i++) {
+    gmarker[i].setMap(null)
+}
+}
+
+});
+
+
+console.log(gmarker);
+
+          }
+    });
+
+			}
+
+
+			google.maps.event.addDomListener(window, "load", map_init);
+
+			(function($) {
+
+				$(".point-list-view").mCustomScrollbar({
+					scrollButtons : {
+						enable : true
+					},
+					theme : 'dark-thick',
+					contentTouchScroll : true
+				});
+
+			})(jQuery);
+
+
+
+        </script>
+    </body>
+</html>
